@@ -1,21 +1,9 @@
-const express = require('express')
-const path = require("path");
-const https = require("https");
-const cors = require("cors");
-
-const app = express()
-const port = 443
-
-app.use(cors());
-app.use(express.json());
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3001;
 
 app.use(express.static(path.join(__dirname, './src')));
 
-const options = {
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-};
 
-let server = https.createServer(options, app);
-server.listen(port, () => {
-    console.log("Listening on port " + port);
-});
