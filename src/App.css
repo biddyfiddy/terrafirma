@@ -1,0 +1,106 @@
+html,
+body {
+    height: 100%;
+    overscroll-behavior-y: none;
+}
+
+body {
+    font-family: "Montserrat";
+    background-color: #1F252B;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo {
+    height: 50px;
+}
+
+.main {
+    color:  #F8F8F8;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.header {
+    font-weight: 100;
+    font-size: 46px;
+    margin-top: 100px;
+    letter-spacing: 3px;
+    font-family: "Frank Ruhl Libre";
+}
+
+.header-2 {
+    font-weight: 100;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    font-family: "Frank Ruhl Libre";
+}
+
+.subdiv {
+    margin-left: 20px;
+}
+
+.marysweirdbar {
+    width:25px;
+}
+
+.stock {
+    width: auto;
+    height:800px;
+    margin-left: 40px;
+}
+
+.grid-container {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.line-spacing {
+    line-height: 25px;
+    letter-spacing: 2px;
+}
+
+.subtext {
+    margin-bottom: 40px;
+    line-height: 25px;
+    letter-spacing: 2px;
+}
+
+.divider {
+    color: #183244;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.divider-2 {
+    color: #183244;
+    margin-top: 40px;
+}
+
+.input-container {
+    margin-bottom: 40px;
+}
+
+.div-container {
+    margin-bottom: 10px;
+}
+
+.nostyle {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+a.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+}
