@@ -13,6 +13,8 @@ import Box from '@mui/material/Box';
 import "@fontsource/frank-ruhl-libre";
 import "@fontsource/montserrat";
 import Checkbox from '@mui/material/Checkbox';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import CopyrightIcon from '@mui/icons-material/Copyright';
 
@@ -43,8 +45,131 @@ const SubmitButton = styled(Button)(({theme}) => ({
     fontFamily: "Montserrat",
     '&:hover': {
         backgroundColor: "#183244",
+    },
+    '&:disabled': {
+        backgroundColor: "#7e7c76",
     }
 }));
+
+const StyledSelect = styled(Select)({
+//MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input
+    "& .MuiSelect-select": {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    "& .MuiInputBase-input": {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    "& .MuiSelect-outlined": {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    "& .MuiOutlinedInput-root.MuiSelect-root": {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    "& .MuiOutlinedInput-root": {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+        '& fieldset': {
+            color: "#F8F8F8",
+            borderColor: "#F8F8F8",
+        },
+        '&:hover fieldset': {
+            color: "#F8F8F8",
+            borderColor: "#F8F8F8",
+        },
+        '&.Mui-focused fieldset': {
+            color: "#F8F8F8",
+            borderColor: "#F8F8F8",
+        },
+    },
+    "& .MuiInputBase-root": {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+
+    '& .MuiOutlinedInput-colorSecondary': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .Mui-focused': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .Mui-disabled': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-adornedStart': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-adornedEnd': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .Mui-error': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-sizeSmall': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-multiline': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-input': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-inputSizeSmall': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-inputMultiline': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-inputAdornedStart': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiOutlinedInput-inputAdornedEnd': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    "& .MuiFormLabel-root.MuiInputLabel-root": {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    "& .MuiFormLabel-root.Mui-disabled": {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& label.Mui-focused': {
+        color: "#F8F8F8",
+        borderColor: "#F8F8F8",
+    },
+    '& .MuiInput-underline:after': {
+        borderBottomColor: "#F8F8F8",
+    },
+});
+
+/*
+class="MuiOutlinedInput-root
+MuiInputBase-root MuiInputBase-colorPrimary css-14drdkw-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+ <div tabindex="0" role="button" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="state" id="state" class="MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input">Alaska</div>
+
+ */
 
 const InputText = styled(TextField)({
     "& .MuiFormLabel-root.MuiInputLabel-root": {
@@ -76,7 +201,7 @@ const InputText = styled(TextField)({
     },
 });
 
-const states = [
+const STATES = [
     { abrv: "AK", name: "Alaska"},
     { abrv: "AL", name: "Alabama"},
     { abrv: "AR", name: "Arkansas"},
@@ -151,10 +276,16 @@ class App extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.submit = this.submit.bind(this);
+        this.isValid = this.isValid.bind(this);
+        this.handleSelectChange = this.handleSelectChange.bind(this);
     }
 
     navigateToInstagram() {
         window.open('https://www.instagram.com/terrafirmacabinetry/', '_blank');
+    }
+
+    handleSelectChange(e) {
+        console.log(e);
     }
 
     handleChange(e) {
@@ -165,16 +296,28 @@ class App extends React.Component {
         })
     }
 
-    submit() {
-        const {firstName, lastName, email, phone, address, city, state, zip, canText, description, timeline} = this.state;
-        console.log(this.state);
-
+    async submit() {
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(this.state)
+        };
+        await fetch("inquiry/", requestOptions)
     }
 
     executeScroll = () => this.contactReference.current.scrollIntoView()
 
+    isValid() {
+        const {firstName, lastName, email, phone, address, city, state, zip, canText, description, timeline} = this.state;
+        return firstName && firstName !== "" && lastName && lastName !== "" && email && email !== "" && phone && phone !== "" && address && address !== "" && city && city !== "" && state && state !== "" && zip && zip !== "" && description && description !=="";
+    }
+
     render() {
         const {firstName, lastName, email, phone, address, city, state, zip, canText, description, timeline} = this.state;
+
+        const disabled = !this.isValid();
 
         return (
             <div>
@@ -200,7 +343,7 @@ class App extends React.Component {
                                 form below.
                             </div>
 
-                            <DarkColorButton variant="outlined">Contact</DarkColorButton>
+                            <DarkColorButton onClick={this.executeScroll} variant="outlined">Contact</DarkColorButton>
 
                             <Divider class="divider"/>
 
@@ -283,12 +426,19 @@ class App extends React.Component {
                                 id="city" value={city} onChange={this.handleChange}
                                 label="City"
                             />
-                            <InputText
-                                required
-                                style={{width: "10%", marginRight: "20px"}}
-                                id="state" value={state} onChange={this.handleChange}
+                            <StyledSelect
+                                id="state"
                                 label="State"
-                            />
+                                style={{width: "10%", marginRight: "20px"}}
+                                value={STATES[0].abrv}
+                                onChange={this.handleSelectChange}
+                            >
+                                {
+                                    STATES.map(state => {
+                                        return <MenuItem value={state.abrv}>{state.name}</MenuItem>
+                                    })
+                                }
+                            </StyledSelect>
                             <InputText
                                 required
                                 style={{width: "10%", marginRight: "20px"}}
@@ -315,7 +465,7 @@ class App extends React.Component {
                             />
                         </div>
 
-                        <SubmitButton variant="contained" onClick={this.submit}>Submit Form</SubmitButton>
+                        <SubmitButton disabled={disabled} variant="contained" onClick={this.submit}>Submit Form</SubmitButton>
 
                         <Divider class="divider"/>
                     </Box>

@@ -1,27 +1,40 @@
 const express = require("express");
 const path = require("path")
-
+const ses = require("./src/server/mailgun");
 const app = express();
 const port = process.env.PORT || 3001;
 
-const publicPath = path.join(__dirname, 'public');
-/*
-
-app.use(express.static(publicPath));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(publicPath, 'index.html'));
-})
-
-
-app.use(express.static(path.join(__dirname, '../build')))*/
-
-/*
-app.get('*', (req, res) => {
-    res.sendFile(path.join(publicPath, 'index.html'));
-})
-*/
-
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'build')));
+
+app.post("/inquiry", async (req, res) => {
+    const body = req.body
+    console.log(body)
+
+    const context = {
+        address: body.address,
+        canText:  body.canText,
+        city: body.city,
+        description: body.description,
+        email: body.email,
+        firstName:  body.firstName,
+        lastName: body.lastName,
+        phone: body.phone,
+        state: body.state,
+        timeline: body.timeline,
+        zip: body.zip
+    };
+
+    await ses.sendEmail( body.email, context).then(function (data) {
+        console.log(data)
+        res.status(200).json("Successful")
+    }).catch(function (error) {
+        console.log(error)
+        res.status(500).json({
+            message: "Could not complete pinata pin"
+        })
+
+    })
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
