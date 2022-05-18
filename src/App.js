@@ -188,7 +188,6 @@ class App extends React.Component {
     }
 
     async submit() {
-        console.log(this.state);
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -202,12 +201,12 @@ class App extends React.Component {
     executeScroll = () => this.contactReference.current.scrollIntoView()
 
     isValid() {
-        const {firstName, lastName, email, phone, address, city, state, zip, canText, description, timeline} = this.state;
+        const {firstName, lastName, email, phone, address, city, state, zip, description} = this.state;
         return firstName && firstName !== "" && lastName && lastName !== "" && email && email !== "" && phone && phone !== "" && address && address !== "" && city && city !== "" && state && state !== "" && zip && zip !== "" && description && description !=="";
     }
 
     render() {
-        const {firstName, lastName, email, phone, address, city, state, zip, canText, description, timeline} = this.state;
+        const {firstName, lastName, email, phone, address, city, zip, description, timeline} = this.state;
 
         const disabled = !this.isValid();
 
@@ -228,7 +227,7 @@ class App extends React.Component {
                 <div class="main">
 
                     <Grid container>
-                        <Grid item xs={12} sm={12} md={12} lg={6} xl={4}>
+                        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
 
                             <h1 class="header">Terra Firma’s Full Website is Coming Soon.</h1>
                             <div class="subtext">For questions, quotes, services and more, please fill out the contact
@@ -262,9 +261,8 @@ class App extends React.Component {
                             </div>
 
                         </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={6} xl={4}>
+                        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
                             <img src={stock} class="stock"/>
-
                         </Grid>
 
                     </Grid>
