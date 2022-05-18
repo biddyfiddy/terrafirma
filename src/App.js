@@ -14,7 +14,6 @@ import "@fontsource/frank-ruhl-libre";
 import "@fontsource/montserrat";
 import Checkbox from '@mui/material/Checkbox';
 import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import CopyrightIcon from '@mui/icons-material/Copyright';
 
@@ -52,124 +51,13 @@ const SubmitButton = styled(Button)(({theme}) => ({
 }));
 
 const StyledSelect = styled(Select)({
-//MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input
-    "& .MuiSelect-select": {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    "& .MuiInputBase-input": {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    "& .MuiSelect-outlined": {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    "& .MuiOutlinedInput-root.MuiSelect-root": {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    "& .MuiOutlinedInput-root": {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-        '& fieldset': {
-            color: "#F8F8F8",
-            borderColor: "#F8F8F8",
-        },
-        '&:hover fieldset': {
-            color: "#F8F8F8",
-            borderColor: "#F8F8F8",
-        },
-        '&.Mui-focused fieldset': {
-            color: "#F8F8F8",
-            borderColor: "#F8F8F8",
-        },
-    },
-    "& .MuiInputBase-root": {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-notchedOutline': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-
-    '& .MuiOutlinedInput-colorSecondary': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .Mui-focused': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .Mui-disabled': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-adornedStart': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-adornedEnd': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .Mui-error': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-sizeSmall': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-multiline': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-input': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-inputSizeSmall': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-inputMultiline': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-inputAdornedStart': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiOutlinedInput-inputAdornedEnd': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    "& .MuiFormLabel-root.MuiInputLabel-root": {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    "& .MuiFormLabel-root.Mui-disabled": {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& label.Mui-focused': {
-        color: "#F8F8F8",
-        borderColor: "#F8F8F8",
-    },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: "#F8F8F8",
-    },
+    /*
+     MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiNativeSelect-iconOutlined css-1g12qau-MuiSvgIcon-root-MuiNativeSelect-icon
+     */
+        "& .MuiOutlinedInput-root.MuiSvgIcon-root": {
+            color: "#F8F8F8"
+        }
 });
-
-/*
-class="MuiOutlinedInput-root
-MuiInputBase-root MuiInputBase-colorPrimary css-14drdkw-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
- <div tabindex="0" role="button" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="state" id="state" class="MuiSelect-select MuiSelect-outlined MuiOutlinedInput-input MuiInputBase-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input">Alaska</div>
-
- */
 
 const InputText = styled(TextField)({
     "& .MuiFormLabel-root.MuiInputLabel-root": {
@@ -257,6 +145,7 @@ const STATES = [
 ]
 
 class App extends React.Component {
+
     constructor(props) {
         super(props);
         this.contactReference = React.createRef()
@@ -277,15 +166,11 @@ class App extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.submit = this.submit.bind(this);
         this.isValid = this.isValid.bind(this);
-        this.handleSelectChange = this.handleSelectChange.bind(this);
+        this.handleCheckChange = this.handleCheckChange.bind(this);
     }
 
     navigateToInstagram() {
         window.open('https://www.instagram.com/terrafirmacabinetry/', '_blank');
-    }
-
-    handleSelectChange(e) {
-        console.log(e);
     }
 
     handleChange(e) {
@@ -296,7 +181,14 @@ class App extends React.Component {
         })
     }
 
+    handleCheckChange(e) {
+        this.setState({
+            canText: e.target.checked ? "yes" : "no"
+        })
+    }
+
     async submit() {
+        console.log(this.state);
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -336,7 +228,7 @@ class App extends React.Component {
                 <div class="main">
 
                     <Grid container>
-                        <Grid item xs={6}>
+                        <Grid item xs={12} sm={12} md={12} lg={6} xl={4}>
 
                             <h1 class="header">Terra Firma’s Full Website is Coming Soon.</h1>
                             <div class="subtext">For questions, quotes, services and more, please fill out the contact
@@ -370,7 +262,7 @@ class App extends React.Component {
                             </div>
 
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={12} sm={12} md={12} lg={6} xl={4}>
                             <img src={stock} class="stock"/>
 
                         </Grid>
@@ -408,9 +300,8 @@ class App extends React.Component {
                                 id="phone" value={phone} onChange={this.handleChange}
                                 label="Phone Number"
                             />
-                            <div style={{display: "inline"}}>Can We Text You? Yes<Checkbox
-                                style={{color: "#F8F8F8"}}></Checkbox> No<Checkbox
-                                style={{color: "#F8F8F8"}}></Checkbox>
+                            <div style={{display: "inline"}}>Can We Text You?
+                                <Checkbox style={{color: "#F8F8F8"}} onChange={this.handleCheckChange}/>
                             </div>
                         </div>
                         <div className="input-container">
@@ -427,15 +318,17 @@ class App extends React.Component {
                                 label="City"
                             />
                             <StyledSelect
-                                id="state"
-                                label="State"
-                                style={{width: "10%", marginRight: "20px"}}
-                                value={STATES[0].abrv}
-                                onChange={this.handleSelectChange}
+                                native
+                                defaultValue={STATES[0].abrv}
+                                onChange={this.handleChange}
+                                style={{width: "10%", marginRight: "20px", color: 'white', border: '1px solid white'}}
+                                inputProps={{
+                                    id: "state"
+                                }}
                             >
                                 {
                                     STATES.map(state => {
-                                        return <MenuItem value={state.abrv}>{state.name}</MenuItem>
+                                        return <option value={state.abrv}>{state.name}</option>
                                     })
                                 }
                             </StyledSelect>
